@@ -15,17 +15,19 @@ class CorrectAnswers{
     $sql = 'INSERT INTO
               correct_answers(questions_id, answer, created_at)
             VALUES
-              ((select id from questions order by created_at desc limit 1), :answer1, CURRENT_TIMESTAMP())';
+              ((select id from questions order by created_at desc limit 1), :answers, CURRENT_TIMESTAMP())';
 
     $dbh = connect();
     $dbh->beginTransaction();
     try {
-      $stmt = $dbh->prepare($sql);
-      // 多分おかしいから調べるbindがおかしい
-      $stmt->bindValue(':answer1', $answers['answer1'], PDO::PARAM_STR);
-      $stmt->execute();
-      $dbh->commit();
-      echo '登録しました。';
+      for($i = 0 ; $i < count($answers); $i++){
+        $answer = $answers[$i];
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindValue(':answers', $answer, PDO::PARAM_STR);
+        $stmt->execute();
+      }
+    $dbh->commit();
+    echo '登録しました。';
     } catch(PDOException $e) {
         $dbh->rollBack();
       exit($e);

@@ -3,8 +3,7 @@ var_dump($_POST);
 
 // 変数の初期化
 $page_flag = 0;
-
-if( !empty($_POST['btn_confirm']) ) {
+if(!empty($_POST['btn_confirm'])) {
 	$page_flag = 1;
 }
 ?>
@@ -29,29 +28,29 @@ if( !empty($_POST['btn_confirm']) ) {
                     <p><?php echo $_POST['question']; ?></p>
                 </div>
                 <div class="element_wrap">
-                    <label>答え１：</label>
-                    <p><?php echo $_POST['answer1']; ?></p>
-                </div>
-                <div class="element_wrap">
-                    <label>答え２：</label>
-                    <p><?php echo $_POST['answer2']; ?></p>
+                    <?php
+                      $answers = $_POST['answers'];
+                      for($i = 0 ; $i < count($answers); $i++){
+                    ?>
+                        <lavel>答え：<?php echo $answers[$i] ?></lavel><br>
+                        <input type="hidden" name="answers[]" value="<?php echo $answers[$i] ?>">
+                        <?php } ?>
                 </div>
                 <input type="submit" name="btn_submit" value="登録する">
                 <input type="hidden" name="question" value="<?php echo $_POST['question']; ?>">
-                <input type="hidden" name="answer1" value="<?php echo $_POST['answer1']; ?>">
-                <input type="hidden" name="answer2" value="<?php echo $_POST['answer2']; ?>">
             </form>
 
-        <?php else: ?>
         <!-- 新規登録画面 -->
+        <?php else: ?>
+
             <form action="" method="POST">
                 <p>問題：</p>
                 <textarea name="question" id="question" cols="30" rows="10"></textarea>
-                <p>答え１：</p>
-                <input type="text" name="answer1">
+                <p>答え：</p>
+                <input type="text" name="answers[]">
                 <br>
-                <p>答え２：</p>
-                <input type="text" name="answer2">
+                <p>答え：</p>
+                <input type="text" name="answers[]">
                 <input type="submit" name="btn_confirm" value="送信">
             </form>
 

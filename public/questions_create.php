@@ -10,7 +10,7 @@
   $question = new Questions();
   $question->questionCreate($questions);
 
-  $answers = $_POST;
+  $answers = $_POST['answers'];
   $answer = new CorrectAnswers();
   $answer->answerCreate($answers);
 
