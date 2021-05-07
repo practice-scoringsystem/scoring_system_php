@@ -1,6 +1,4 @@
 <?php
-var_dump($_POST);
-
 // 変数の初期化
 $page_flag = 0;
 if(!empty($_POST['btn_confirm'])) {
