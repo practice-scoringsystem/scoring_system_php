@@ -69,15 +69,15 @@ class CorrectAnswers{
     $dbh = connect();
     $dbh->beginTransaction();
     try {
-      for($i = 0 ; $i < count($answers); $i++){
-        $answer = $answers[$i];
+      foreach ($answers as $row) {
         $stmt = $dbh->prepare($sql);
-        $stmt->bindValue(':answer', $answer['answer'], PDO::PARAM_STR);
-        $stmt->bindValue(':id', $answer['answer_ids'], PDO::PARAM_INT);
-        $stmt->execute();
+        $stmt->execute(array(
+          ':answer' => $row['answers'],
+          ':id' => $row['answer_ids'])
+       );
       }
-    $dbh->commit();
-    echo '更新しました';
+      $dbh->commit();
+      echo '更新しました';
     } catch(PDOException $e) {
         $dbh->rollBack();
       exit($e);

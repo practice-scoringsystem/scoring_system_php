@@ -7,8 +7,6 @@
   $question->questionUpdate($questions);
 
   $answers = $_POST['answers'];
-  var_dump($answers);
-  die();
   $answer = new CorrectAnswers();
   $answer->answerUpdate($answers);
 
