@@ -12,6 +12,8 @@
   $CA = new CorrectAnswers();
   $CAData = $CA->getAnsById($_GET['id']);
 
+  $error = array();
+
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +25,7 @@
       <title>編集画面</title>
   </head>
   <body>
+    <?php include("./common/header.php"); ?>
     <h2>編集画面</h2>
     <form action="update_confirm.php" method="POST">
         <input type="hidden" name="id" value="<?php echo $id ?>">
@@ -39,6 +42,7 @@
         <p>
           <input type="submit" value="送信">
         </p>
+
     </form>
   </body>
 </html>

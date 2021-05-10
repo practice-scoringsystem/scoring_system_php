@@ -11,6 +11,6 @@
   $answer = new CorrectAnswers();
   $result = $answer->ansDelete($answers);
 
-?>
+  header("location: list.php");
 
-<p><a href="./list.php">戻る</a></p>
+?>

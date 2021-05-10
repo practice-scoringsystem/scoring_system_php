@@ -16,12 +16,13 @@
       <title>確認画面</title>
   </head>
   <body>
+    <?php include("./common/header.php"); ?>
     <h2>確認画面</h2>
     <h3>下記の内容に変更しますか？</h3>
     <form action="update.php" method="POST">
       <div class="element_wrap">  
         <p>問題：</p>
-        <input type="text" name="question" value="<?php echo $question ?>">
+        <textarea readonly name="question"><?php echo $question ?></textarea>
         <input type="hidden" name="id" value="<?php echo $id ?>">
       </div>
       <div class="element_wrap">  
@@ -30,8 +31,8 @@
           for($i = 0 ; $i < count($answers['answer_ids']); $i++){
         ?>
         
-          <lavel>答え：<?php echo $answers['answers'][$i] ?></lavel><br>
-          <input type="hidden" name="answers[answers][]" value="<?php echo $answers['answers'][$i] ?>">
+          <lavel>答え：</lavel><br>
+          <input type="text" readonly name="answers[answers][]" value="<?php echo $answers['answers'][$i] ?>"><br>
 
           <input type="hidden" name="answers[answer_ids][]" value="<?php echo $answers['answer_ids'][$i] ?>">
         

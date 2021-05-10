@@ -1,13 +1,18 @@
 <?php
+  ini_set("display_errors", 1);
+  error_reporting(E_ALL);
+
 // 変数の初期化
 $page_flag = 0;
 if(!empty($_POST['btn_confirm'])) {
 	$page_flag = 1;
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
+    <?php include("./common/header.php"); ?>
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,20 +24,18 @@ if(!empty($_POST['btn_confirm'])) {
 
         <!-- 確認ページ -->
         <?php if( $page_flag === 1 ): ?>
-
             <form action="questions_create.php" method="POST">
                 <div class="element_wrap">
                     <label>問題：</label>
-                    <p><?php echo $_POST['question']; ?></p>
+                    <textarea readonly><?php echo $_POST['question']; ?></textarea>
                 </div>
                 <div class="element_wrap">
                     <?php
                       $answers = $_POST['answers'];
                       for($i = 0 ; $i < count($answers); $i++){
                     ?>
-                        <lavel>答え：<?php echo $answers[$i] ?></lavel><br>
-                        <input type="hidden" name="answers[]" value="<?php echo $answers[$i] ?>">
-                        <?php } ?>
+                        <lavel>答え：</lavel><input type="text" readonly name="answers[]" value="<?php echo $answers[$i] ?>"><br>
+                    <?php } ?>
                 </div>
                 <input type="submit" name="btn_submit" value="登録する">
                 <input type="hidden" name="question" value="<?php echo $_POST['question']; ?>">

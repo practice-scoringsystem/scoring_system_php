@@ -38,7 +38,6 @@ class CorrectAnswers{
 
       // 成功したらコミット
       $dbh->commit();
-      echo '登録しました。';
     } catch(PDOException $e) {
         $dbh->rollBack();
       exit($e);
@@ -92,7 +91,6 @@ class CorrectAnswers{
         }
     // 成功したらコミット
       $dbh->commit();
-      echo '更新しました';
 
     } catch(PDOException $e) {
       $dbh->rollBack();
@@ -110,7 +108,7 @@ class CorrectAnswers{
       $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
       $stmt->execute();
     }
-    echo '問題を削除しました';
+
   }
 
 }

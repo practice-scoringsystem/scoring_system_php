@@ -1,6 +1,4 @@
 <?php
-  ini_set("display_errors", 1);
-  error_reporting(E_ALL);
 
   require_once('../classes/Questions.php');
   require_once('../classes/CorrectAnswers.php');
@@ -25,16 +23,17 @@
       <title>削除確認画面</title>
   </head>
   <body>
+    <?php include("./common/header.php"); ?>
     <h2>削除確認画面</h2>
     <form action="delete.php" method="POST">
-        <input type="text" name="id" value="<?php echo $id ?>">
+        <input type="hidden" name="id" value="<?php echo $id ?>">
         <p>問題：</p>
-        <input type="text" name="question" value="<?php echo $question ?>">
+        <textarea readonly name="question"><?php echo $question ?></textarea>
 
         <?php foreach($CAData as $ca_column): ?>
           <tr>
             <p>答え：</p>
-            <td><input type="text" name="answers[answers][]" value="<?php echo($ca_column)['answer'] ?>"></td>
+            <td><input type="text" readonly name="answers[answers][]" value="<?php echo($ca_column)['answer'] ?>"></td>
             <input type="hidden" name="answers[answer_ids][]" value="<?php echo($ca_column)['id'] ?>">
           </tr>
         <?php endforeach; ?>

@@ -10,4 +10,6 @@
   $answer = new CorrectAnswers();
   $answer->answerUpdate($answers);
 
+  header("location: list.php");
+
 ?>

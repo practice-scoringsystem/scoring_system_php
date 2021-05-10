@@ -11,4 +11,6 @@
   $answer = new CorrectAnswers();
   $answer->answerCreate($answers);
 
+  header("location: list.php");
+
 ?>

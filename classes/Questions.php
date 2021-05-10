@@ -9,7 +9,6 @@ class Questions{
     $stmt = $dbh->query($sql);
     $result = $stmt->fetchall(PDO::FETCH_ASSOC);
     return $result;
-    $dbh = null;
   }
 
 // 新規登録
