@@ -72,5 +72,18 @@ class Questions{
       exit($e);
     }
   }
+
+  public function delete($id) {
+    if(empty($id)) {
+      exit('IDが不正です');
+    }
+
+    $dbh = connect();
+
+    $stmt = $dbh->prepare("DELETE FROM questions WHERE id = :id");
+    $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
+
+    $stmt->execute();
+  }
 }
 ?>

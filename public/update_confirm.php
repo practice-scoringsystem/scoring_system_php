@@ -1,13 +1,12 @@
 <?php
-  ini_set("display_errors", 1);
-  error_reporting(E_ALL);
 
   $id = $_POST['id'];
   $question = $_POST['question'];
 
   $answers = $_POST['answers'];
-  var_dump($answers);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -26,18 +25,18 @@
         <input type="hidden" name="id" value="<?php echo $id ?>">
       </div>
       <div class="element_wrap">  
+       
         <?php
-          for($i = 0 ; $i < count($answers['answers']); $i++){
+          for($i = 0 ; $i < count($answers['answer_ids']); $i++){
         ?>
+        
           <lavel>答え：<?php echo $answers['answers'][$i] ?></lavel><br>
           <input type="hidden" name="answers[answers][]" value="<?php echo $answers['answers'][$i] ?>">
-        <?php } ?>
 
-        <?php
-            for($j = 0 ; $j < count($answers['answer_ids']); $j++){
-          ?>
-            <input type="hidden" name="answers[answer_ids][]" value="<?php echo $answers['answer_ids'][$j] ?>">
-          <?php } ?>
+          <input type="hidden" name="answers[answer_ids][]" value="<?php echo $answers['answer_ids'][$i] ?>">
+        
+        <?php } ?>
+      
       </div>
       <input type="submit" value="送信">
     </form>

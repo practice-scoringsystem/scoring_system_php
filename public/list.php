@@ -50,7 +50,7 @@
             </td>
           <?php endforeach; ?>
           <td><a href="./update_form.php?id=<?php echo $column['id'] ?>">編集</a></td>
-          <td><a href=#>削除</a></td>
+          <td><a href="./delete_confirm.php?id=<?php echo $column['id'] ?>">削除</a></td>
         </tr>
       <?php endforeach; ?>
     </table>

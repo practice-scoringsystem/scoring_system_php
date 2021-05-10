@@ -1,4 +1,6 @@
 <?php
+  ini_set("display_errors", 1);
+  error_reporting(E_ALL);
 
   require_once('../classes/Questions.php');
   require_once('../classes/CorrectAnswers.php');
@@ -20,12 +22,12 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>編集画面</title>
+      <title>削除確認画面</title>
   </head>
   <body>
-    <h2>編集画面</h2>
-    <form action="update_confirm.php" method="POST">
-        <input type="hidden" name="id" value="<?php echo $id ?>">
+    <h2>削除確認画面</h2>
+    <form action="delete.php" method="POST">
+        <input type="text" name="id" value="<?php echo $id ?>">
         <p>問題：</p>
         <input type="text" name="question" value="<?php echo $question ?>">
 
@@ -37,7 +39,7 @@
           </tr>
         <?php endforeach; ?>
         <p>
-          <input type="submit" value="送信">
+          <input type="submit" value="削除する">
         </p>
     </form>
   </body>
