@@ -1,9 +1,20 @@
 <?php
+  session_start();
   require_once "./common/htmlspecialchars.php";
+
+  //入力内容を持たないアクセスやURLからのアクセスは入力画面へ遷移
+  if (!isset($_SESSION['input_data'])) {
+      header('Location:register_form.php');
+      exit();
+  }
+
+  $_POST = $_SESSION['input_data'];
 
   $question = $_POST['question'];
 
   $answers = $_POST['answers'];
+
+  session_destroy();
 
 ?>
 

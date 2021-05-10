@@ -43,6 +43,9 @@
                 echo h($ca_column['answer']) ?>
             </td>
           <?php endforeach; ?>
+          <form action="uodate_form.php" method="POST">
+            <input type="submit" value="編集">
+          </form>
           <td><a href="./update_form.php?id=<?php echo $column['id'] ?>">編集</a></td>
           <td><a href="./delete_confirm.php?id=<?php echo $column['id'] ?>">削除</a></td>
         </tr>
