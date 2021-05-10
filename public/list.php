@@ -31,7 +31,7 @@
     <form action="logout.php" method="POST">
       <input type="submit" name="logout" value="ログアウト">
     </form>
-    <p><a href="./register.php">新規作成</a></p>
+    <p><a href="./register_form.php">新規作成</a></p>
     <table>
       <tr>
         <th>id</th>
