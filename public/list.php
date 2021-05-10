@@ -27,7 +27,7 @@
   </head>
   <body>
     <h2>問題・答え一覧</h2>
-    <a href="#">Top</a>
+    <a href="./Top.php">Top</a>
     <form action="logout.php" method="POST">
       <input type="submit" name="logout" value="ログアウト">
     </form>

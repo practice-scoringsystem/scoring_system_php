@@ -5,6 +5,10 @@
 
   $answers = $_POST['answers'];
 
+  function h($s) {
+    return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +22,13 @@
   <body>
     <?php include("./common/header.php"); ?>
     <h2>確認画面</h2>
+
     <h3>下記の内容に変更しますか？</h3>
     <form action="update.php" method="POST">
       <div class="element_wrap">  
         <p>問題：</p>
-        <textarea readonly name="question"><?php echo $question ?></textarea>
-        <input type="hidden" name="id" value="<?php echo $id ?>">
+        <textarea readonly name="question"><?php echo h($question) ?></textarea>
+        <input type="hidden" name="id" value="<?php echo h($id) ?>">
       </div>
       <div class="element_wrap">  
        
@@ -32,9 +37,9 @@
         ?>
         
           <lavel>答え：</lavel><br>
-          <input type="text" readonly name="answers[answers][]" value="<?php echo $answers['answers'][$i] ?>"><br>
+          <input type="text" readonly name="answers[answers][]" value="<?php echo h($answers['answers'][$i]) ?>"><br>
 
-          <input type="hidden" name="answers[answer_ids][]" value="<?php echo $answers['answer_ids'][$i] ?>">
+          <input type="hidden" name="answers[answer_ids][]" value="<?php echo h($answers['answer_ids'][$i]) ?>">
         
         <?php } ?>
       

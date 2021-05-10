@@ -1,12 +1,14 @@
 <?php
-  ini_set("display_errors", 1);
-  error_reporting(E_ALL);
 
-// 変数の初期化
-$page_flag = 0;
-if(!empty($_POST['btn_confirm'])) {
-	$page_flag = 1;
-}
+  // 変数の初期化
+  $page_flag = 0;
+  if(!empty($_POST['btn_confirm'])) {
+    $page_flag = 1;
+  }
+
+  function h($s) {
+    return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
+  }
 
 ?>
 
@@ -27,18 +29,18 @@ if(!empty($_POST['btn_confirm'])) {
             <form action="questions_create.php" method="POST">
                 <div class="element_wrap">
                     <label>問題：</label>
-                    <textarea readonly><?php echo $_POST['question']; ?></textarea>
+                    <textarea readonly><?php echo h($_POST['question']) ?></textarea>
                 </div>
                 <div class="element_wrap">
                     <?php
                       $answers = $_POST['answers'];
                       for($i = 0 ; $i < count($answers); $i++){
                     ?>
-                        <lavel>答え：</lavel><input type="text" readonly name="answers[]" value="<?php echo $answers[$i] ?>"><br>
+                        <lavel>答え：</lavel><input type="text" readonly name="answers[]" value="<?php echo h($answers[$i]) ?>"><br>
                     <?php } ?>
                 </div>
                 <input type="submit" name="btn_submit" value="登録する">
-                <input type="hidden" name="question" value="<?php echo $_POST['question']; ?>">
+                <input type="hidden" name="question" value="<?php echo h($_POST['question']) ?>">
             </form>
 
         <!-- 新規登録画面 -->
