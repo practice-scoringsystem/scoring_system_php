@@ -1,11 +1,3 @@
-<?php
-
-  function h($s) {
-    return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
-  }
-
-?>
-
 <!DOCTYPE html>
 <html lang="ja">
     <?php include("./common/header.php"); ?>

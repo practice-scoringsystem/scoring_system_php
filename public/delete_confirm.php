@@ -1,7 +1,7 @@
 <?php
-
-  require_once('../classes/Questions.php');
-  require_once('../classes/CorrectAnswers.php');
+  require_once "../classes/Questions.php";
+  require_once "../classes/CorrectAnswers.php";
+  require_once "./common/htmlspecialchars.php";
 
   $questions = new Questions();
   $result = $questions->getById($_GET['id']);
@@ -10,11 +10,7 @@
   $question = $result['question'];
 
   $CA = new CorrectAnswers();
-  $CAData = $CA->getAnsById($_GET['id']);
-
-  function h($s) {
-    return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
-  }
+  $CAData = $CA->getAnsByQuestionsId($_GET['id']);
 
 ?>
 

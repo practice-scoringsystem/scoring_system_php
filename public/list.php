@@ -1,19 +1,13 @@
 <?php
-  ini_set("display_errors", 1);
-  error_reporting(E_ALL);
-
   require_once "../classes/Questions.php";
   require_once "../classes/CorrectAnswers.php";
+  require_once "./common/htmlspecialchars.php";
 
   $question = new Questions();
   $questionsData = $question->getAll();
 
   $CA = new CorrectAnswers();
   $CAData = $CA->getAll();
-
-  function h($s) {
-    return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
-  }
 
 ?>
 

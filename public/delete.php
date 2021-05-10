@@ -2,12 +2,11 @@
   require_once "../classes/Questions.php";
   require_once "../classes/CorrectAnswers.php";
 
-  $questions = $_POST['id'];
+  $id = $_POST['id'];
   $question = new Questions();
-  $result = $question->delete($questions);
+  $result = $question->delete($id);
 
   $answers = $_POST['answers'];
-  var_dump($answers);
   $answer = new CorrectAnswers();
   $result = $answer->ansDelete($answers);
 

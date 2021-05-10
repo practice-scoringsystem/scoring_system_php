@@ -45,7 +45,7 @@ class CorrectAnswers{
   }
 
   // １件取得
-  public function getAnsById($id) {
+  public function getAnsByQuestionsId($id) {
     if(empty($id)) {
       exit('IDが不正です');
     }

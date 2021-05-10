@@ -1,13 +1,10 @@
 <?php
+  require_once "./common/htmlspecialchars.php";
 
   $id = $_POST['id'];
   $question = $_POST['question'];
 
   $answers = $_POST['answers'];
-
-  function h($s) {
-    return htmlspecialchars($s, ENT_QUOTES, "UTF-8");
-  }
 
 ?>
 

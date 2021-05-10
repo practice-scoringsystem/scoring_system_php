@@ -72,6 +72,7 @@ class Questions{
     }
   }
 
+  // 削除機能
   public function delete($id) {
     if(empty($id)) {
       exit('IDが不正です');
