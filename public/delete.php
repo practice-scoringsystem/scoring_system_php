@@ -1,15 +1,14 @@
 <?php
-
   require_once "../classes/Questions.php";
   require_once "../classes/CorrectAnswers.php";
 
-  $questions = $_POST;
+  $id = $_POST['id'];
   $question = new Questions();
-  $question->questionCreate($questions);
+  $result = $question->delete($id);
 
   $answers = $_POST['answers'];
   $answer = new CorrectAnswers();
-  $answer->answerCreate($answers);
+  $result = $answer->ansDelete($answers);
 
   header("location: list.php");
 
