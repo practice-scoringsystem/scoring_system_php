@@ -15,7 +15,7 @@
   $CAData = $CA->getAnsByQuestionsId($_GET['id']);
 
     // バリデーション
-    //----------未入力チェック----------//
+    // ----------未入力チェック----------//
     if (!empty($_POST) && empty($_SESSION['input_data'])) {
 
         //問題チェック

@@ -1,11 +1,11 @@
 <?php
-  session_start();
+  // session_start();
   require_once "../classes/Questions.php";
   require_once "../classes/CorrectAnswers.php";
   require_once "./common/htmlspecialchars.php";
   require_once "../classes/UserLogic.php";
 
-  $login_user = $_SESSION['login_user'];
+  // $login_user = $_SESSION['login_user'];
 
   $question = new Questions();
   $questionsData = $question->getRndAll();
@@ -28,7 +28,7 @@
         <?php foreach($questionsData as $column): ?>
           <tr>  
             <td>id:<?php echo h($column['id']) ?></td>
-            <td><input type="hidden" name="id[]" value="<?php echo h($column['id']) ?>"></td>
+            <td><input type="hidden" name="ids[]" value="<?php echo h($column['id']) ?>"></td>
             
             <td>問題:<?php echo h($column['question']) ?></td>
             
