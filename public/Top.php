@@ -11,6 +11,8 @@
       <input type="submit" name="logout" value="ログアウト">
     </form>
    
-    <a href="./list.php">問題と答えを確認・登録する ></a>
+    <a href="./list.php">問題と答えを確認・登録する ></a><br>
+    <a href="./test_form.php">テストをする ></a><br>
+    <a href="#">過去の採点結果をみる ></a>
   </body>
 </html>

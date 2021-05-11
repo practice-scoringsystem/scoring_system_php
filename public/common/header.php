@@ -7,7 +7,7 @@
   <title></title>
 </head>
 <body>
-  <a href="./Top.php">Top</a>
+  <a href="./top.php">Top</a>
   <form action="logout.php" method="POST">
     <input type="submit" name="logout" value="ログアウト">
   </form>
