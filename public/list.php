@@ -21,10 +21,7 @@
   </head>
   <body>
     <h2>問題・答え一覧</h2>
-    <a href="./Top.php">Top</a>
-    <form action="logout.php" method="POST">
-      <input type="submit" name="logout" value="ログアウト">
-    </form>
+    <?php include("./common/header.php"); ?>
     <p><a href="./register_form.php">新規作成</a></p>
     <table>
       <tr>
@@ -38,15 +35,14 @@
           <td><?php echo h($column['id']) ?></td>
           <td><?php echo h($column['question']) ?></td>
           <?php foreach($CAData as $ca_column): ?>
-            <td>
-              <?php if($ca_column['questions_id'] == $column['id'])
-                echo h($ca_column['answer']) ?>
-            </td>
+              <?php if($ca_column['questions_id'] == $column['id']) { ?>
+                <td><?php echo h($ca_column['answer']) ?></td>
+              <?php } ?>
           <?php endforeach; ?>
           <td><a href="./update_form.php?id=<?php echo $column['id'] ?>">編集</a></td>
           <td><a href="./delete_confirm.php?id=<?php echo $column['id'] ?>">削除</a></td>
         </tr>
-      <?php endforeach; ?>
+      <?php endforeach;?>
     </table>
   </body>
 </html>

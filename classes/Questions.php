@@ -1,13 +1,22 @@
 <?php
 require_once '../dbconnect.php';
 
-// 全件取得
-class Questions{
-  public function getAll() {
+  // 全件取得
+  class Questions{
+    public function getAll() {
+      $dbh = connect();
+      $sql = "SELECT * FROM questions";
+      $stmt = $dbh->query($sql);
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      return $result;
+  }
+
+  // ランダム全件取得
+  public function getRndAll() {
     $dbh = connect();
-    $sql = "SELECT * FROM questions";
+    $sql = "SELECT * FROM questions ORDER BY RAND()";
     $stmt = $dbh->query($sql);
-    $result = $stmt->fetchall(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
   }
 
