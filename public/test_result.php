@@ -1,12 +1,27 @@
 <?php
+  session_start();
+
   require_once "../classes/Questions.php";
   require_once "../classes/CorrectAnswers.php";
   require_once "../classes/UserLogic.php";
+  require_once "../classes/Histories.php";
+
+  // ログインチェック
+  $result = UserLogic::checkLogin();
+
+  if (!$result) {
+    $_SESSION['login_err'] = 'ログインしてください。';
+    header('Location: login_form.php');
+    return;
+  }
 
   $question_ids = $_POST['ids'];
   $inp_answers = $_POST['input_answers'];
 
-  // $ans_arr = array();
+  // ログインユーザー名
+  $login_user = $_SESSION['login_user'];
+
+  // 正解数を入れる変数を初期化
   $score = 0;
 
   // DBの値を取り出す
@@ -43,6 +58,12 @@
   // 採点
   $result = round(100 * $score / $q_count);
 
+  // 採点履歴へ登録処理
+  $histories = array();
+  $histories = array('user_id' => $login_user['id'], 'point' => $result);
+  $history = new Histories();
+  $history->historiesCreate($histories);
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -54,6 +75,13 @@
 </head>
 <body>
   <?php include("./common/header.php"); ?>
+  <p>
+    <?php if (isset($_SESSION['login_user'])) {
+      echo($login_user['name']);
+    } ?>さん
+  </p>
+  <p><?php echo($q_count);?>問中<?php echo($score);?>問正解です。</p>
+  <p><?php echo($result)?>点でした。</p>
   <?php
     // php.iniで上手く設定できなかったためtimezoneを設定
     date_default_timezone_set('Asia/Tokyo');

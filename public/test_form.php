@@ -1,11 +1,9 @@
 <?php
-  // session_start();
+
   require_once "../classes/Questions.php";
   require_once "../classes/CorrectAnswers.php";
   require_once "./common/htmlspecialchars.php";
   require_once "../classes/UserLogic.php";
-
-  // $login_user = $_SESSION['login_user'];
 
   $question = new Questions();
   $questionsData = $question->getRndAll();
