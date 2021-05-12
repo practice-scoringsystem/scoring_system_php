@@ -7,7 +7,7 @@ require_once '../dbconnect.php';
       $dbh = connect();
       $sql = "SELECT * FROM questions";
       $stmt = $dbh->query($sql);
-      $result = $stmt->fetchall(PDO::FETCH_ASSOC);
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
       return $result;
   }
 
@@ -16,7 +16,7 @@ require_once '../dbconnect.php';
     $dbh = connect();
     $sql = "SELECT * FROM questions ORDER BY RAND()";
     $stmt = $dbh->query($sql);
-    $result = $stmt->fetchall(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $result;
   }
 

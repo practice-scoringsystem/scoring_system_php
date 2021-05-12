@@ -18,7 +18,7 @@
   $question_ids = $_POST['ids'];
   $inp_answers = $_POST['input_answers'];
 
-  // ログインユーザー名
+  // ログインユーザー情報
   $login_user = $_SESSION['login_user'];
 
   // 正解数を入れる変数を初期化
