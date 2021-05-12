@@ -25,9 +25,10 @@
             $_SESSION['input_data'] = $_POST;
             header('Location:./register_confirm.php');
             exit();
+        } elseif (!empty($_SESSION['input_data'])) {
+            $_POST = $_SESSION['input_data'];
         }
-    } elseif (!empty($_SESSION['input_data'])) {
-        $_POST = $_SESSION['input_data'];
+        
     }
 
     session_destroy();

@@ -1,5 +1,15 @@
 <?php
+  session_start();
+
   require_once "./common/htmlspecialchars.php";
+
+  //入力内容を持たないアクセスやURLからのアクセスは入力画面へ遷移
+  if (!isset($_SESSION['input_data'])) {
+      header('Location:update_form.php');
+      exit();
+  }
+
+  $_POST = $_SESSION['input_data'];
 
   $id = $_POST['id'];
   $question = $_POST['question'];
@@ -27,7 +37,7 @@
         <textarea readonly name="question"><?php echo h($question) ?></textarea>
         <input type="hidden" name="id" value="<?php echo h($id) ?>">
       </div>
-      <div class="element_wrap">  
+      <div class="element_wrap"> 
        
         <?php
           for($i = 0 ; $i < count($answers['answer_ids']); $i++){
