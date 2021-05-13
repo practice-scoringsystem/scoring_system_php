@@ -1,4 +1,5 @@
 <?php
+
   session_start();
 
   require_once "../classes/Histories.php";
@@ -25,6 +26,7 @@
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,6 +36,7 @@
 <body>
   <?php include("./common/header.php"); ?>
   <h2>履歴</h2>
+  
   <table border="1">
     <tr>
       <th>氏名</th>
