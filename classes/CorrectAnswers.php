@@ -42,7 +42,7 @@ class CorrectAnswers{
     }
   }
 
-  // １件取得
+  // Questions_idが一致したものを取得
   public function getAnsByQuestionsId($id) {
     if(empty($id)) {
       exit('IDが不正です');

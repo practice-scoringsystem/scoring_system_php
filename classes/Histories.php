@@ -25,5 +25,24 @@
         exit($e);
       }
     }
+
+    // 履歴を取ってくる
+    public function getHistoryByUserId($user_id) {
+      if(empty($user_id)) {
+        exit('IDが不正です');
+      }
+
+      $dbh = connect();
+
+      $stmt = $dbh->prepare("SELECT * FROM histories WHERE user_id = :user_id");
+      $stmt->bindValue(':user_id', (int)$user_id, PDO::PARAM_INT);
+      $stmt->execute();
+      $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      if(!$result) {
+        exit('ユーザーを登録してください。');
+      }
+      return $result;
+    }
   }
 ?>
