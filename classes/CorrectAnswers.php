@@ -9,7 +9,7 @@ class CorrectAnswers{
     $dbh = connect();
     $sql = "SELECT * FROM correct_answers";
     $stmt = $dbh->query($sql);
-    $result = $stmt->fetchall(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $dbh = null;
     return $result;
   }
@@ -42,7 +42,7 @@ class CorrectAnswers{
     }
   }
 
-  // １件取得
+  // Questions_idが一致したものを取得
   public function getAnsByQuestionsId($id) {
     if(empty($id)) {
       exit('IDが不正です');
@@ -53,7 +53,7 @@ class CorrectAnswers{
     $stmt = $dbh->prepare("SELECT * FROM correct_answers WHERE questions_id = :id");
     $stmt->bindValue(':id', (int)$id, PDO::PARAM_INT);
     $stmt->execute();
-    $result = $stmt->fetchall(PDO::FETCH_ASSOC);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if(!$result) {
       exit('問題を登録してください。');
